@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>mysql命令整理 | 灵明小世界</title><meta name="author" content="super汤姆"><meta name="copyright" content="super汤姆"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="mysql1.数据库和表的基本操作创建数据库CREATE DATABASE demo; 查看创建数据库的信息SHOW CREATE DATABASE Demo; 使用该数据库USE demo; 将数据库格式从gbk修改为gbk_binALTER DATABASE demo DEFAULT CHARACTER SET gbk COLLATE gbk_bin; 删除数据库DROP DATABASE d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql命令整理">
+<meta property="og:url" content="http://example.com/2022/04/08/mysql%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="灵明小世界">
+<meta property="og:description" content="mysql1.数据库和表的基本操作创建数据库CREATE DATABASE demo; 查看创建数据库的信息SHOW CREATE DATABASE Demo; 使用该数据库USE demo; 将数据库格式从gbk修改为gbk_binALTER DATABASE demo DEFAULT CHARACTER SET gbk COLLATE gbk_bin; 删除数据库DROP DATABASE d">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/t.jpg">
+<meta property="article:published_time" content="2022-04-08T03:37:07.000Z">
+<meta property="article:modified_time" content="2022-04-08T03:46:21.612Z">
+<meta property="article:author" content="super汤姆">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/t.jpg"><link rel="shortcut icon" href="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201811%2F17%2F20181117212315_zuBrv.thumb.1000_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651467624&t=b1fb4c6e1fed9a15ad80cad335a35fe1"><link rel="canonical" href="http://example.com/2022/04/08/mysql%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'mysql命令整理',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-08 11:46:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi.qqkou.com%2Fi%2F1a2667294360x3453994977b26.jpg&amp;refer=http%3A%2F%2Fi.qqkou.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1651402578&amp;t=2696b6c0ab93b94d97a96844e7c7d714" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/t.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">灵明小世界</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">mysql命令整理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-08T03:37:07.000Z" title="发表于 2022-04-08 11:37:07">2022-04-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-08T03:46:21.612Z" title="更新于 2022-04-08 11:46:21">2022-04-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="mysql命令整理"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><h2 id="1-数据库和表的基本操作"><a href="#1-数据库和表的基本操作" class="headerlink" title="1.数据库和表的基本操作"></a>1.数据库和表的基本操作</h2><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><p>CREATE DATABASE demo;</p>
+<h4 id="查看创建数据库的信息"><a href="#查看创建数据库的信息" class="headerlink" title="查看创建数据库的信息"></a>查看创建数据库的信息</h4><p>SHOW CREATE DATABASE Demo;</p>
+<h4 id="使用该数据库"><a href="#使用该数据库" class="headerlink" title="使用该数据库"></a>使用该数据库</h4><p>USE demo;</p>
+<h4 id="将数据库格式从gbk修改为gbk-bin"><a href="#将数据库格式从gbk修改为gbk-bin" class="headerlink" title="将数据库格式从gbk修改为gbk_bin"></a>将数据库格式从gbk修改为gbk_bin</h4><p>ALTER DATABASE demo DEFAULT CHARACTER SET gbk COLLATE gbk_bin;</p>
+<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><p>DROP DATABASE demo;</p>
+<h4 id="查看所有数据库"><a href="#查看所有数据库" class="headerlink" title="查看所有数据库"></a>查看所有数据库</h4><p>SHOW DATABASES;</p>
+<h4 id="创建表，并建三个列"><a href="#创建表，并建三个列" class="headerlink" title="创建表，并建三个列"></a>创建表，并建三个列</h4><p>CREATE  TABLE stu(<br>stu_id INT(10),<br>stu_name VARCHAR(20),<br>stu_age INT(10)<br>);</p>
+<h4 id="查看列信息"><a href="#查看列信息" class="headerlink" title="查看列信息"></a>查看列信息</h4><p>SHOW CREATE TABLE stu;</p>
+<h4 id="将表demo改为demostu"><a href="#将表demo改为demostu" class="headerlink" title="将表demo改为demostu"></a>将表demo改为demostu</h4><p>ALTER TABLE stu RENAME demostu;</p>
+<h4 id="将stu-age改为-stu-sex-VARCHAR-10"><a href="#将stu-age改为-stu-sex-VARCHAR-10" class="headerlink" title="将stu_age改为 stu_sex VARCHAR(10)"></a>将stu_age改为 stu_sex VARCHAR(10)</h4><p>ALTER TABLE demostu CHANGE stu_age stu_sex VARCHAR(10);</p>
+<h4 id="stu-sex字段类型改为char"><a href="#stu-sex字段类型改为char" class="headerlink" title="stu_sex字段类型改为char"></a>stu_sex字段类型改为char</h4><p>ALTER TABLE demostu MODIFY  stu_sex  CHAR;</p>
+<h4 id="增加字段"><a href="#增加字段" class="headerlink" title="增加字段"></a>增加字段</h4><p>ALTER TABLE demostu ADD stu_age INT(10);</p>
+<h4 id="删除字段"><a href="#删除字段" class="headerlink" title="删除字段"></a>删除字段</h4><p>ALTER TABLE demostu DROP stu_age;</p>
+<h4 id="字段stu-name放在stu-sex后面"><a href="#字段stu-name放在stu-sex后面" class="headerlink" title="字段stu_name放在stu_sex后面"></a>字段stu_name放在stu_sex后面</h4><p>ALTER TABLE demostu MODIFY stu_name VARCHAR(20) AFTER stu_sex;</p>
+<h4 id="stu-name放在第一行"><a href="#stu-name放在第一行" class="headerlink" title="stu_name放在第一行"></a>stu_name放在第一行</h4><p>ALTER TABLE demostu MODIFY stu_name VARCHAR(20) FIRST;</p>
+<h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><p>DROP TABLE demostu;</p>
+<h2 id="2-表中数据的基本操作"><a href="#2-表中数据的基本操作" class="headerlink" title="2.表中数据的基本操作"></a>2.表中数据的基本操作</h2><p>在first库中操作</p>
+<p>CREATE TABLE emp(<br>id INT,<br>ename VARCHAR(100),<br>gender VARCHAR(10),<br>birthday DATE,<br>salary DECIMAL(10,2),<br>entry_date DATE,<br>resume_text VARCHAR(200)<br>);</p>
+<h4 id="查看库中的表"><a href="#查看库中的表" class="headerlink" title="查看库中的表"></a>查看库中的表</h4><p>DESC emp;</p>
+<h4 id="插入一条数据"><a href="#插入一条数据" class="headerlink" title="插入一条数据"></a>插入一条数据</h4><p>INSERT INTO emp(id,ename,gender,birthday,salary,entry_date,resume_text)<br>VALUES(1,’liyunlong’,’male’,’1925-05-10’,8888,’1935-7-7’,’none’);</p>
+<h4 id="查看表"><a href="#查看表" class="headerlink" title="查看表"></a>查看表</h4><p>SELECT * FROM emp;</p>
+<h4 id="不指定字段名"><a href="#不指定字段名" class="headerlink" title="不指定字段名"></a>不指定字段名</h4><p>INSERT INTO emp VALUES(2,’xuiqin’,’female’,’1930-05-10’,8888,’1939-7-7’,’none’);</p>
+<h4 id="为指定列插入数据"><a href="#为指定列插入数据" class="headerlink" title="为指定列插入数据"></a>为指定列插入数据</h4><p>INSERT INTO emp(id,ename,gender,birthday) VALUES (3,’zhaogang’,’male’,’1928-11-11’);</p>
+<p>CREATE TABLE teacher(<br>id INT,<br>tname VARCHAR(50),<br>age INT<br>);<br>SELECT * FROM teacher</p>
+<h4 id="批量插入数据"><a href="#批量插入数据" class="headerlink" title="批量插入数据"></a>批量插入数据</h4><p>INSERT INTO teacher(id,tname,age)<br>VALUES(1,’li’,44),(2,’ding’,44),(3,’kong’,44);</p>
+<h4 id="更新全部数据"><a href="#更新全部数据" class="headerlink" title="更新全部数据"></a>更新全部数据</h4><p>UPDATE teacher SET age=33</p>
+<h4 id="跟新部分数据"><a href="#跟新部分数据" class="headerlink" title="跟新部分数据"></a>跟新部分数据</h4><p>UPDATE teacher SET age=40 WHERE tname=’li’;</p>
+<h4 id="删除表中所有数据"><a href="#删除表中所有数据" class="headerlink" title="删除表中所有数据"></a>删除表中所有数据</h4><p>DELETE FROM teacher;</p>
+<h4 id="删除表中部分数据"><a href="#删除表中部分数据" class="headerlink" title="删除表中部分数据"></a>删除表中部分数据</h4><p>DELETE FROM teacher WHERE tname=’li’;</p>
+<h4 id="删除表中所有数据-只有全删除这一个功能"><a href="#删除表中所有数据-只有全删除这一个功能" class="headerlink" title="删除表中所有数据,只有全删除这一个功能"></a>删除表中所有数据,只有全删除这一个功能</h4><p>TRUNCATE teacher ;</p>
+<h2 id="3-单表查询"><a href="#3-单表查询" class="headerlink" title="3.单表查询"></a>3.单表查询</h2><p>##以下操作在two库中</p>
+<p>CREATE DATABASE two;</p>
+<p>#stu表<br>CREATE TABLE stu(<br>sid CHAR(6) COMMENT ‘学生学号’,<br>sname VARCHAR(50) COMMENT ‘学生姓名’,<br>age TINYINT UNSIGNED COMMENT ‘学生年龄’,<br>gender VARCHAR (50) COMMENT ‘学生性别’<br>);</p>
+<p>INSERT INTO stu VALUES(‘S_1001’,’liuYi’,25,’male’);<br>INSERT INTO stu VALUES(‘S_1002’,’chenEr’,19,’female’);<br>INSERT INTO stu VALUES(‘S_1003’,’zhangSan’,20,’female’);<br>INSERT INTO stu VALUES(‘S_1004’,’liSi’,18,’male’);<br>INSERT INTO stu VALUES(‘S_1005’,’wangwu’,25,’male’);</p>
+<p>#emp 表<br>CREATE TABLE emp(<br>empno INT COMMENT ‘员工编号’,<br>ename VARCHAR(50) COMMENT ‘员工姓名’,<br>job VARCHAR(50) COMMENT ‘员工工作’,<br>mgr INT COMMENT ‘领到编号’,<br>hiredate DATE COMMENT ‘入职日期’,<br>sal DECIMAL (7,2) COMMENT ‘月薪’,<br>comm DECIMAL (7,2) COMMENT’奖金’,<br>deptno INT COMMENT ‘部门编号’<br>);</p>
+<p>INSERT INTO emp VALUES(7369,’Clerk’,’A’,7902,’1980-12-17’,800,NULL,20);<br>INSERT INTO emp VALUES(7499,’Jack’,’A’,7922,’1981-12-17’,1500,NULL,30);<br>INSERT INTO emp VALUES(7521,’Sun’,’B’,7232,’1983-12-17’,1100,NULL,20);<br>INSERT INTO emp VALUES(7566,’Tom’,’A’,7912,’1982-11-17’,3000,NULL,40);<br>INSERT INTO emp VALUES(7653,’Marry’,’C’,7202,’1979-12-1’,1900,NULL,10);<br>INSERT INTO emp VALUES(7363,’Hobe’,’A’,7402,’1985-12-17’,2000,NULL,20);<br>INSERT INTO emp VALUES(7362,’Jem’,’B’,7932,’1986-1-17’,1200,NULL,20);</p>
+<p>#部门表</p>
+<p>CREATE TABLE dept(<br>deptno INT COMMENT ‘部门编码’,<br>dname VARCHAR(50) COMMENT ‘部门名称’,<br>loc VARCHAR(50) COMMENT ‘部门地址’<br>);</p>
+<p>INSERT INTO dept VALUES(10,’ACCOUNTING’,’NEW YOUK’);<br>INSERT INTO dept VALUES(20,’RESEARCH’,’DALLAS’);<br>INSERT INTO dept VALUES(30,’SALES’,’CHICAGO’);<br>INSERT INTO dept VALUES(40,’OPERATTIONS’,’BOSTON’);</p>
+<h4 id="查全表"><a href="#查全表" class="headerlink" title="查全表"></a>查全表</h4><p>SELECT * FROM stu;</p>
+<h4 id="查指定字段"><a href="#查指定字段" class="headerlink" title="查指定字段"></a>查指定字段</h4><p>SELECT sid,sname FROM stu;</p>
+<h4 id="带关系运算符的查询-where"><a href="#带关系运算符的查询-where" class="headerlink" title="带关系运算符的查询 where"></a>带关系运算符的查询 where</h4><p>SELECT * FROM stu WHERE gender=’female’;</p>
+<h4 id="带and关键字的查询"><a href="#带and关键字的查询" class="headerlink" title="带and关键字的查询"></a>带and关键字的查询</h4><p>SELECT * FROM stu WHERE age&gt;19 AND gender=’female’;</p>
+<h4 id="带or关键字的查询"><a href="#带or关键字的查询" class="headerlink" title="带or关键字的查询"></a>带or关键字的查询</h4><p>SELECT * FROM stu WHERE age&gt;19 OR gender=’female’;<br>SELECT * FROM stu WHERE (sid=’10001’ OR age&gt;19 )AND gender=’female’;</p>
+<h4 id="带-is-null-或-is-not-null关键字"><a href="#带-is-null-或-is-not-null关键字" class="headerlink" title="带 is null 或 is not null关键字"></a>带 is null 或 is not null关键字</h4><p>SELECT  *FROM stu WHERE age IS NULL;</p>
+<h4 id="between-and"><a href="#between-and" class="headerlink" title="between and"></a>between and</h4><p>SELECT * FROM stu WHERE age BETWEEN 19 AND 21;<br>SELECT * FROM stu WHERE age NOT BETWEEN 19 AND 21;</p>
+<h4 id="like-模糊查询"><a href="#like-模糊查询" class="headerlink" title="like 模糊查询"></a>like 模糊查询</h4><p>SELECT <em>FROM stu WHERE sname LIKE ‘_____’;  #5个下划线代表5个字母，查询5个字母的名字<br>SELECT* FROM stu WHERE sname LIKE ‘___i’; # 查询第四个字母为i<br>SELECT</em> FROM stu WHERE sname LIKE ‘z%’ ;  #z开头，     %代表任意字符<br>SELECT* FROM stu WHERE sname LIKE ‘%a%’ ;  #中间包含a  %代表任意字符</p>
+<h4 id="distinct-去重数据"><a href="#distinct-去重数据" class="headerlink" title="distinct 去重数据"></a>distinct 去重数据</h4><p>SELECT DISTINCT sal FROM emp;</p>
+<h4 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h4><p>SELECT * FROM emp ORDER BY sal ASC;  #asc升序排序<br>SELECT * FROM emp ORDER BY sal DESC;  #desc降序排序<br>SELECT * FROM emp ORDER BY sal ASC,empno ASC;  #工资升序排序，工资相同员工号升序</p>
+<p>#聚合函数</p>
+<h4 id="COUNT-1-列名-返回行数"><a href="#COUNT-1-列名-返回行数" class="headerlink" title="COUNT(*|1|列名) 返回行数"></a>COUNT(*|1|列名) 返回行数</h4><p>SELECT COUNT(<em>) FROM emp;<br>SELECT COUNT(1) AS totle FROM emp; #as可省略 设置列名的别名 totle<br>SELECT COUNT(</em>) AS total FROM emp WHERE sal&gt;2000;<br>SELECT COUNT(comm),COUNT(mgr)  FROM emp ;</p>
+<h4 id="sum-求和"><a href="#sum-求和" class="headerlink" title="sum() 求和"></a>sum() 求和</h4><p>SELECT SUM(sal) FROM emp;<br>SELECT SUM(sal+IFNULL(comm,0)) AS total FROM emp; #奖金和工资 ifnull()函数用0替代null</p>
+<h4 id="avg-平均"><a href="#avg-平均" class="headerlink" title="avg() 平均"></a>avg() 平均</h4><p>SELECT AVG(sal) FROM emp;</p>
+<h4 id="max-最大值"><a href="#max-最大值" class="headerlink" title="max() 最大值"></a>max() 最大值</h4><p>SELECT MAX(sal) FROM emp;</p>
+<h4 id="min-最小值"><a href="#min-最小值" class="headerlink" title="min() 最小值"></a>min() 最小值</h4><p>SELECT MIN(sal) FROM emp;</p>
+<h4 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h4><p>SELECT deptno,SUM(sal) FROM emp GROUP BY deptno; #按照部门查询工资总和<br>SELECT deptno,COUNT(<em>) FROM emp GROUP BY deptno; #按照部门查询人数<br>SELECT deptno,COUNT(</em>) FROM emp WHERE sal&gt;1000 GROUP BY deptno; #按照部门查询工资大于1000的人数</p>
+<h4 id="having字句-对于复杂语句，查询完成后再过滤一次"><a href="#having字句-对于复杂语句，查询完成后再过滤一次" class="headerlink" title="having字句 对于复杂语句，查询完成后再过滤一次"></a>having字句 对于复杂语句，查询完成后再过滤一次</h4><p>SELECT deptno,SUM(sal) FROM emp GROUP BY deptno HAVING SUM(sal)&gt;4000; </p>
+<h4 id="limit-分页"><a href="#limit-分页" class="headerlink" title="limit 分页"></a>limit 分页</h4><p>SELECT * FROM stu LIMIT 1,3;<br>SELECT * FROM stu LIMIT 3;#从0开始可以省略</p>
+<h2 id="4-数据完成性"><a href="#4-数据完成性" class="headerlink" title="4.数据完成性"></a>4.数据完成性</h2><p>#本章操作在three 数据库下</p>
+<p>CREATE DATABASE three;<br>#建订单表orders<br>CREATE TABLE orders(<br>oid INT ,<br>total DOUBLE,<br>NAME VARCHAR(50),<br>phone VARCHAR(50),<br>addr VARCHAR(50)<br>);</p>
+<p>INSERT INTO orders VALUES(1,100,’zs’,1366,’xxx’);</p>
+<h4 id="设置主键，唯一标识某一条记录。-主键不能为空"><a href="#设置主键，唯一标识某一条记录。-主键不能为空" class="headerlink" title="设置主键，唯一标识某一条记录。  主键不能为空"></a>设置主键，唯一标识某一条记录。  主键不能为空</h4><p>ALTER TABLE orders ADD PRIMARY KEY(oid); #key()中添加主键</p>
+<p>DESC orders; #查看表结构</p>
+<p>#建订单表orders2 在建表时直接添加主键 PRIMARY KEY<br>CREATE TABLE orders2(<br>oid INT PRIMARY KEY,<br>total DOUBLE,<br>NAME VARCHAR(50),<br>phone VARCHAR(50),<br>addr VARCHAR(50)<br>);<br>DESC orders2</p>
+<p>#建订单表orders3  同时为两列添加主键<br>CREATE TABLE orders3(<br>oid INT,<br>pid INT,<br>total DOUBLE ,<br>NAME VARCHAR(50),<br>phone VARCHAR(50),<br>addr VARCHAR(50),<br> PRIMARY KEY(oid,pid)<br>);<br>DESC orders3;</p>
+<h4 id="唯一约束-unique-确保字段值唯一性"><a href="#唯一约束-unique-确保字段值唯一性" class="headerlink" title="唯一约束 unique 确保字段值唯一性"></a>唯一约束 unique 确保字段值唯一性</h4><p>CREATE TABLE emp(<br>id INT PRIMARY KEY,<br>e_name VARCHAR(20),<br>phone VARCHAR(20) UNIQUE,<br>addr VARCHAR(50)</p>
+<p>);<br>DESC emp;</p>
+<p>#若两个phone相同则报错<br>INSERT INTO emp (id,e_name,phone,addr) VALUES (1,’zs’,’1366’,’xxx’),(2,’iss’, ‘1336’ ,’yyy’);</p>
+<h4 id="自动增长列-AUTO-INCREMENT"><a href="#自动增长列-AUTO-INCREMENT" class="headerlink" title="自动增长列 AUTO_INCREMENT"></a>自动增长列 AUTO_INCREMENT</h4><p>CREATE TABLE emp2(<br>id INT PRIMARY KEY AUTO_INCREMENT,<br>emp_name VARCHAR(20),<br>phone  VARCHAR(20)<br>);<br>DESC emp2;<br>INSERT INTO emp2(emp_name,phone) VALUES(‘aa’,’1222’),(‘as’,’2222’);</p>
+<h4 id="普通索引"><a href="#普通索引" class="headerlink" title="普通索引"></a>普通索引</h4><p>CREATE TABLE test1(<br>id INT PRIMARY KEY,<br>tname VARCHAR(20),<br>remark VARCHAR(50),<br>INDEX(tname)<br>);</p>
+<p>CREATE TABLE test2(<br>id INT PRIMARY KEY,<br>tname VARCHAR(20),<br>remark VARCHAR(50)<br>);<br>CREATE INDEX test2_id ON test2(id);<br>SHOW CREATE TABLE test2;</p>
+<h4 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h4><p>CREATE TABLE test3(<br>id INT PRIMARY KEY,<br>tname VARCHAR(20),<br>remark VARCHAR(50),<br>UNIQUE INDEX(tname)<br>);<br>SHOW CREATE TABLE test3;</p>
+<p>#域完整性</p>
+<h4 id="非空约束"><a href="#非空约束" class="headerlink" title="非空约束"></a>非空约束</h4><p>CREATE TABLE test4(<br>id INT PRIMARY KEY,<br>tname VARCHAR(20) NOT NULL,<br>addr VARCHAR(50)<br>);<br>INSERT INTO test4 VALUES(1,NULL,’xxx’); #错误代码： 1048 COLUMN ‘tname’ cannot be NULL</p>
+<h4 id="默认值约束"><a href="#默认值约束" class="headerlink" title="默认值约束"></a>默认值约束</h4><p>CREATE TABLE test5(<br>id INT PRIMARY KEY,<br>tname VARCHAR(20),<br>addr VARCHAR(50) DEFAULT ‘AAA’<br>);<br>INSERT INTO test5(id,tname) VALUES(1,’tom’); </p>
+<h4 id="为已建成的表添加默认约束"><a href="#为已建成的表添加默认约束" class="headerlink" title="为已建成的表添加默认约束"></a>为已建成的表添加默认约束</h4><p>CREATE TABLE test6(<br>id INT PRIMARY KEY,<br>tname VARCHAR(20),<br>addr VARCHAR(50)<br>);<br>ALTER TABLE test6 MODIFY tname VARCHAR(20) DEFAULT ‘lihua’;<br>DESC test6;</p>
+<p>#引用完整性<br>#外键</p>
+<p>#建表 学科表 subject1，学生表 student</p>
+<p>CREATE TABLE subject1(<br>sub_id INT PRIMARY KEY,<br>sub_name VARCHAR(20)<br>);</p>
+<p>CREATE TABLE student(<br>stu_id INT PRIMARY KEY,<br>stu_name VARCHAR(20),<br>sub_id INT NOT NULL<br>);</p>
+<p>INSERT INTO subject1(sub_id,sub_name) VALUES (1,’math’);<br>INSERT INTO student(stu_id,stu_name,sub_id) VALUES (1,’zs’,1);<br>SELECT* FROM subject1;</p>
+<h4 id="添加外键-student主表-subject1从表"><a href="#添加外键-student主表-subject1从表" class="headerlink" title="添加外键  student主表  subject1从表"></a>添加外键  student主表  subject1从表</h4><p>ALTER TABLE student ADD FOREIGN KEY(sub_id) REFERENCES subject1(sub_id);</p>
+<p>#从表无数据，主表无法插入</p>
+<p>#在创建表的的时候添加外键</p>
+<p>CREATE TABLE student2(<br>stu_id INT PRIMARY KEY,<br>stu_name VARCHAR(20)<br>);</p>
+<p>CREATE TABLE score(<br>sco_id INT PRIMARY KEY,<br>score INT,<br>stu_id INT,<br>FOREIGN KEY(stu_id) REFERENCES student2(stu_id)<br>);<br>SHOW CREATE TABLE score;</p>
+<h4 id="删除外键约束"><a href="#删除外键约束" class="headerlink" title="删除外键约束"></a>删除外键约束</h4><p>ALTER TABLE score DROP FOREIGN KEY score_ibfk_1;</p>
+<h2 id="5-对表查询"><a href="#5-对表查询" class="headerlink" title="5.对表查询"></a>5.对表查询</h2><p>CREATE DATABASE four;</p>
+<h4 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h4><p>CREATE TABLE user1(<br>uid INT PRIMARY KEY,<br>uname VARCHAR(20),<br>usex VARCHAR(2),<br>uaddress VARCHAR(50)<br>);<br>CREATE TABLE user_text(<br>uid INT PRIMARY KEY,<br>utext VARCHAR (100),<br>FOREIGN KEY(uid) REFERENCES user1(uid)<br>);</p>
+<h4 id="一对多-一个学生可以有多个成绩"><a href="#一对多-一个学生可以有多个成绩" class="headerlink" title="一对多 一个学生可以有多个成绩"></a>一对多 一个学生可以有多个成绩</h4><p>CREATE TABLE student(<br>stu_id INT PRIMARY KEY,<br>stu_name VARCHAR(20)<br>);<br>CREATE TABLE score (<br>sco_id INT PRIMARY KEY,<br>score INT,<br>stu_id INT,<br>FOREIGN KEY(stu_id) REFERENCES student(stu_id)<br>);</p>
+<h4 id="多对多-一个老师对多个学生，一个学生对多个老师"><a href="#多对多-一个老师对多个学生，一个学生对多个老师" class="headerlink" title="多对多 一个老师对多个学生，一个学生对多个老师"></a>多对多 一个老师对多个学生，一个学生对多个老师</h4><p>CREATE TABLE teacher(<br>tea_id INT PRIMARY KEY,<br>tea_name VARCHAR (20)<br>);<br>CREATE TABLE stu(<br>stu_id INT PRIMARY KEY,<br>stu_name VARCHAR(20)<br>);<br>CREATE TABLE tea_stu(<br>tea_id INT,<br>stu_id INT,<br>FOREIGN KEY(tea_id) REFERENCES teacher(tea_id),<br>FOREIGN KEY(stu_id) REFERENCES stu(stu_id)<br>);</p>
+<p>#合并结果集</p>
+<p>CREATE TABLE test1(<br>id INT PRIMARY KEY,<br>tname VARCHAR(20)<br>);<br>INSERT INTO test1 VALUES(1,’za’);</p>
+<p> CREATE TABLE test2(<br>id INT PRIMARY KEY,<br>tname VARCHAR(20)<br>);<br>INSERT INTO test2 VALUES(1,’zp’);</p>
+<h4 id="使用union关键字合并-查找结果-并去除重复"><a href="#使用union关键字合并-查找结果-并去除重复" class="headerlink" title="使用union关键字合并 查找结果 并去除重复"></a>使用union关键字合并 查找结果 并去除重复</h4><p>SELECT * FROM test1 UNION SELECT * FROM test2</p>
+<p>INSERT INTO test1 VALUES(2,’aaa’);<br>INSERT INTO test2 VALUES(2,’aaa’);</p>
+<h4 id="union-all-不过滤重复"><a href="#union-all-不过滤重复" class="headerlink" title="union all 不过滤重复"></a>union all 不过滤重复</h4><p>SELECT * FROM test1 UNION ALL SELECT * FROM test2</p>
+<p>#连接查询</p>
+<p>#建表emp dept</p>
+<p>CREATE TABLE emp (<br>empno INT COMMENT ‘员工编号’ ,<br>ename VARCHAR(50) COMMENT ‘员工姓名’,<br>job VARCHAR(50) COMMENT ‘员工工作’,<br>mgr INT COMMENT ‘领导编号’,<br>hiredate DATE  COMMENT ‘入职日期’,<br>sal DECIMAL(7,2) COMMENT  ‘月薪’,<br>comm DECIMAL(7,2) COMMENT ‘奖金’,<br>deptno INT COMMENT  ‘部门编号’<br>);</p>
+<p>INSERT INTO emp VALUES<br>(7369,’SMITH’,’CLERK’,7902, ‘1980-12-17’ ,800,NULL, 20);<br>INSERT INTO emp VALUES<br>(7499,’ALLEN’,’SALESMAN’ ,7698,’1981-02-20’,1600, 300,30);<br>INSERT INTO emp VALUES<br>(7521,’ WARD’,’SALESMAN’,7698,’1981-02-22 ‘,1250,500,30);<br>INSERT INTO emp VALUES<br>(7566, ‘JONES’,’MANAGER’,7839,’1981-04-02’,2975,NOLL, 20);<br>INSERT INTO emp VALUES<br>(7654,’MARTIN’,’SALESMAN’,7698, ‘1981-09-28’,1250,1400,30);<br>INSERT INTO emp VALUES<br>(7698,’BLAKE’,’MANAGER’,7839, ‘1981-05-01’,2850,NULL,30);<br>INSERT INTO emp VALUES<br>(7782,’CLARK’,’MANAGER’,7839, ‘1981-06-09’,2450,NULL,10);<br>INSERT INTO emp VALUES<br>(7788, ‘SCOTT’,’ANALYST’,7566, ‘1987-04-19’ ,3000,NULL, 20);<br>INSERT INTO emp VALUES<br>(7839,’KING’,’PRESIDENT’,NULL, ‘1981-11-17’, 5000,NULL,10);<br>INSERT INTO emp VALUES<br>(7844,’TURNER’,’SALESMAN’,7698, ‘1981-09-08’,1500,0,30);<br>INSERT INTO emp VALUES<br>(7876,’ADAMS’,’CLERK’,7788,’1987-05-23’,1100,NULL,20);<br>INSERT INTO emp VALUES<br>(7900,’JAMES’,’CLERK’,7698, ‘1981-12-03’ ,950,NULL,30);<br>INSERT INTO emp VALUES<br>(7902, ‘FORD’,’ANALYST’,7566, ‘1981-12-03 ‘ , 3000,NULL,20);<br>INSERT INTO emp VALUES<br>(7934,’MILLER’，’CLERK’，7782,’1982-01-23’,1300,NULL,10);</p>
+<p>CREATE TABLE dept(<br>deptno INT PRIMARY KEY,<br>dname VARCHAR(50) COMMENT ‘部门名称’,<br>loc VARCHAR(50) COMMENT ‘部门地点’<br>);<br>INSERT INTO dept (deptno,dname,loc) VALUES(10,’accounting’,’new york’);<br>INSERT INTO dept (deptno,dname,loc) VALUES(20,’research’,’dallas’);<br>INSERT INTO dept (deptno,dname,loc) VALUES(30,’sales’,’chicago’);<br>INSERT INTO dept (deptno,dname,loc) VALUES(40,’operations’,’boston’);</p>
+<p>DROP TABLE subject1<br>DELETE FROM student<br>DELETE FROM subject1<br>SELECT * FROM dept</p>
+<h4 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h4><p>SELECT e.empno,e.ename,d.deptno,d.dname FROM emp e CROSS JOIN dept d;</p>
+<h4 id="筛选无意义条件"><a href="#筛选无意义条件" class="headerlink" title="筛选无意义条件"></a>筛选无意义条件</h4><p>SELECT e.empno,e.ename,d.deptno,d.dname FROM emp e CROSS JOIN dept d WHERE e.deptno=d.deptno;</p>
+<h4 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h4><p>SELECT e.empno,e.ename,d.deptno,d.dname FROM emp e INNER JOIN dept d ON e.deptno=d.deptno;<br>#员工名字有A的<br>SELECT e.empno,e.ename,d.deptno,d.dname FROM emp e INNER JOIN dept d ON e.deptno=d.deptno WHERE e.ename LIKE ‘%A%’</p>
+<p>#外连接</p>
+<h4 id="左外连接"><a href="#左外连接" class="headerlink" title="左外连接"></a>左外连接</h4><p>SELECT e.empno,e.ename,d.deptno,d.dname FROM emp e LEFT JOIN dept d ON e.deptno=d.deptno ;</p>
+<h4 id="右外连接"><a href="#右外连接" class="headerlink" title="右外连接"></a>右外连接</h4><p>SELECT e.empno,e.ename,d.deptno,d.dname FROM emp e RIGHT JOIN dept d ON e.deptno=d.deptno ;</p>
+<p>未完、、、</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">super汤姆</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/04/08/mysql%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/">http://example.com/2022/04/08/mysql%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">灵明小世界</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=null" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/04/01/%E6%B5%8B%E8%AF%95/"><img class="next-cover" src="/img/t.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Github镜像加速下载</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi.qqkou.com%2Fi%2F1a2667294360x3453994977b26.jpg&amp;refer=http%3A%2F%2Fi.qqkou.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1651402578&amp;t=2696b6c0ab93b94d97a96844e7c7d714" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">super汤姆</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql"><span class="toc-number">1.</span> <span class="toc-text">mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.</span> <span class="toc-text">1.数据库和表的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">查看创建数据库的信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">使用该数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%BC%E5%BC%8F%E4%BB%8Egbk%E4%BF%AE%E6%94%B9%E4%B8%BAgbk-bin"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">将数据库格式从gbk修改为gbk_bin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.1.0.5.</span> <span class="toc-text">删除数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.1.0.6.</span> <span class="toc-text">查看所有数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8%EF%BC%8C%E5%B9%B6%E5%BB%BA%E4%B8%89%E4%B8%AA%E5%88%97"><span class="toc-number">1.1.0.7.</span> <span class="toc-text">创建表，并建三个列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%97%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.0.8.</span> <span class="toc-text">查看列信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86%E8%A1%A8demo%E6%94%B9%E4%B8%BAdemostu"><span class="toc-number">1.1.0.9.</span> <span class="toc-text">将表demo改为demostu</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86stu-age%E6%94%B9%E4%B8%BA-stu-sex-VARCHAR-10"><span class="toc-number">1.1.0.10.</span> <span class="toc-text">将stu_age改为 stu_sex VARCHAR(10)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#stu-sex%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B%E6%94%B9%E4%B8%BAchar"><span class="toc-number">1.1.0.11.</span> <span class="toc-text">stu_sex字段类型改为char</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%AD%97%E6%AE%B5"><span class="toc-number">1.1.0.12.</span> <span class="toc-text">增加字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%AD%97%E6%AE%B5"><span class="toc-number">1.1.0.13.</span> <span class="toc-text">删除字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5stu-name%E6%94%BE%E5%9C%A8stu-sex%E5%90%8E%E9%9D%A2"><span class="toc-number">1.1.0.14.</span> <span class="toc-text">字段stu_name放在stu_sex后面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#stu-name%E6%94%BE%E5%9C%A8%E7%AC%AC%E4%B8%80%E8%A1%8C"><span class="toc-number">1.1.0.15.</span> <span class="toc-text">stu_name放在第一行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8"><span class="toc-number">1.1.0.16.</span> <span class="toc-text">删除表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%A1%A8%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.</span> <span class="toc-text">2.表中数据的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BA%93%E4%B8%AD%E7%9A%84%E8%A1%A8"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">查看库中的表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E4%B8%80%E6%9D%A1%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">插入一条数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%A1%A8"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">查看表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">不指定字段名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E6%8C%87%E5%AE%9A%E5%88%97%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.0.5.</span> <span class="toc-text">为指定列插入数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.0.6.</span> <span class="toc-text">批量插入数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E5%85%A8%E9%83%A8%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.0.7.</span> <span class="toc-text">更新全部数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%9F%E6%96%B0%E9%83%A8%E5%88%86%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.0.8.</span> <span class="toc-text">跟新部分数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8%E4%B8%AD%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.0.9.</span> <span class="toc-text">删除表中所有数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8%E4%B8%AD%E9%83%A8%E5%88%86%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.0.10.</span> <span class="toc-text">删除表中部分数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8%E4%B8%AD%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE-%E5%8F%AA%E6%9C%89%E5%85%A8%E5%88%A0%E9%99%A4%E8%BF%99%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.0.11.</span> <span class="toc-text">删除表中所有数据,只有全删除这一个功能</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.3.</span> <span class="toc-text">3.单表查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E5%85%A8%E8%A1%A8"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">查全表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">查指定字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%A6%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E6%9F%A5%E8%AF%A2-where"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">带关系运算符的查询 where</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%A6and%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">带and关键字的查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%A6or%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.3.0.5.</span> <span class="toc-text">带or关键字的查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%A6-is-null-%E6%88%96-is-not-null%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.3.0.6.</span> <span class="toc-text">带 is null 或 is not null关键字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#between-and"><span class="toc-number">1.3.0.7.</span> <span class="toc-text">between and</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#like-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.3.0.8.</span> <span class="toc-text">like 模糊查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#distinct-%E5%8E%BB%E9%87%8D%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.0.9.</span> <span class="toc-text">distinct 去重数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.3.0.10.</span> <span class="toc-text">排序查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#COUNT-1-%E5%88%97%E5%90%8D-%E8%BF%94%E5%9B%9E%E8%A1%8C%E6%95%B0"><span class="toc-number">1.3.0.11.</span> <span class="toc-text">COUNT(*|1|列名) 返回行数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sum-%E6%B1%82%E5%92%8C"><span class="toc-number">1.3.0.12.</span> <span class="toc-text">sum() 求和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#avg-%E5%B9%B3%E5%9D%87"><span class="toc-number">1.3.0.13.</span> <span class="toc-text">avg() 平均</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#max-%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-number">1.3.0.14.</span> <span class="toc-text">max() 最大值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#min-%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="toc-number">1.3.0.15.</span> <span class="toc-text">min() 最小值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.3.0.16.</span> <span class="toc-text">分组查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#having%E5%AD%97%E5%8F%A5-%E5%AF%B9%E4%BA%8E%E5%A4%8D%E6%9D%82%E8%AF%AD%E5%8F%A5%EF%BC%8C%E6%9F%A5%E8%AF%A2%E5%AE%8C%E6%88%90%E5%90%8E%E5%86%8D%E8%BF%87%E6%BB%A4%E4%B8%80%E6%AC%A1"><span class="toc-number">1.3.0.17.</span> <span class="toc-text">having字句 对于复杂语句，查询完成后再过滤一次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#limit-%E5%88%86%E9%A1%B5"><span class="toc-number">1.3.0.18.</span> <span class="toc-text">limit 分页</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%88%90%E6%80%A7"><span class="toc-number">1.4.</span> <span class="toc-text">4.数据完成性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%94%AE%EF%BC%8C%E5%94%AF%E4%B8%80%E6%A0%87%E8%AF%86%E6%9F%90%E4%B8%80%E6%9D%A1%E8%AE%B0%E5%BD%95%E3%80%82-%E4%B8%BB%E9%94%AE%E4%B8%8D%E8%83%BD%E4%B8%BA%E7%A9%BA"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">设置主键，唯一标识某一条记录。  主键不能为空</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%94%AF%E4%B8%80%E7%BA%A6%E6%9D%9F-unique-%E7%A1%AE%E4%BF%9D%E5%AD%97%E6%AE%B5%E5%80%BC%E5%94%AF%E4%B8%80%E6%80%A7"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">唯一约束 unique 确保字段值唯一性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%A2%9E%E9%95%BF%E5%88%97-AUTO-INCREMENT"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">自动增长列 AUTO_INCREMENT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95"><span class="toc-number">1.4.0.4.</span> <span class="toc-text">普通索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95"><span class="toc-number">1.4.0.5.</span> <span class="toc-text">唯一索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E7%A9%BA%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.4.0.6.</span> <span class="toc-text">非空约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%80%BC%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.4.0.7.</span> <span class="toc-text">默认值约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E5%B7%B2%E5%BB%BA%E6%88%90%E7%9A%84%E8%A1%A8%E6%B7%BB%E5%8A%A0%E9%BB%98%E8%AE%A4%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.4.0.8.</span> <span class="toc-text">为已建成的表添加默认约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%A4%96%E9%94%AE-student%E4%B8%BB%E8%A1%A8-subject1%E4%BB%8E%E8%A1%A8"><span class="toc-number">1.4.0.9.</span> <span class="toc-text">添加外键  student主表  subject1从表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.4.0.10.</span> <span class="toc-text">删除外键约束</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AF%B9%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.5.</span> <span class="toc-text">5.对表查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E5%AF%B9%E4%B8%80"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">一对一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E5%AF%B9%E5%A4%9A-%E4%B8%80%E4%B8%AA%E5%AD%A6%E7%94%9F%E5%8F%AF%E4%BB%A5%E6%9C%89%E5%A4%9A%E4%B8%AA%E6%88%90%E7%BB%A9"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">一对多 一个学生可以有多个成绩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%AF%B9%E5%A4%9A-%E4%B8%80%E4%B8%AA%E8%80%81%E5%B8%88%E5%AF%B9%E5%A4%9A%E4%B8%AA%E5%AD%A6%E7%94%9F%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%AD%A6%E7%94%9F%E5%AF%B9%E5%A4%9A%E4%B8%AA%E8%80%81%E5%B8%88"><span class="toc-number">1.5.0.3.</span> <span class="toc-text">多对多 一个老师对多个学生，一个学生对多个老师</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8union%E5%85%B3%E9%94%AE%E5%AD%97%E5%90%88%E5%B9%B6-%E6%9F%A5%E6%89%BE%E7%BB%93%E6%9E%9C-%E5%B9%B6%E5%8E%BB%E9%99%A4%E9%87%8D%E5%A4%8D"><span class="toc-number">1.5.0.4.</span> <span class="toc-text">使用union关键字合并 查找结果 并去除重复</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#union-all-%E4%B8%8D%E8%BF%87%E6%BB%A4%E9%87%8D%E5%A4%8D"><span class="toc-number">1.5.0.5.</span> <span class="toc-text">union all 不过滤重复</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF"><span class="toc-number">1.5.0.6.</span> <span class="toc-text">笛卡尔积</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%9B%E9%80%89%E6%97%A0%E6%84%8F%E4%B9%89%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.5.0.7.</span> <span class="toc-text">筛选无意义条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.5.0.8.</span> <span class="toc-text">内连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A6%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.5.0.9.</span> <span class="toc-text">左外连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.5.0.10.</span> <span class="toc-text">右外连接</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/08/mysql%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" title="mysql命令整理"><img src="/img/t.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mysql命令整理"/></a><div class="content"><a class="title" href="/2022/04/08/mysql%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" title="mysql命令整理">mysql命令整理</a><time datetime="2022-04-08T03:37:07.000Z" title="发表于 2022-04-08 11:37:07">2022-04-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/01/%E6%B5%8B%E8%AF%95/" title="Github镜像加速下载"><img src="/img/t.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Github镜像加速下载"/></a><div class="content"><a class="title" href="/2022/04/01/%E6%B5%8B%E8%AF%95/" title="Github镜像加速下载">Github镜像加速下载</a><time datetime="2022-04-01T03:41:55.000Z" title="发表于 2022-04-01 11:41:55">2022-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/11/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="我的第一篇文章"><img src="/img/t.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的第一篇文章"/></a><div class="content"><a class="title" href="/2021/12/11/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="我的第一篇文章">我的第一篇文章</a><time datetime="2021-12-11T12:25:00.000Z" title="发表于 2021-12-11 20:25:00">2021-12-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/11/hello-world/" title="Hello World"><img src="/img/t.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2021/12/11/hello-world/" title="Hello World">Hello World</a><time datetime="2021-12-11T12:11:57.916Z" title="发表于 2021-12-11 20:11:57">2021-12-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By super汤姆</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
