@@ -30,8 +30,50 @@
   background-color: #49b1f5 !important;
 }
 
-/* 文章底部上一篇/下一篇：去掉背景图，白色文字在深色底上正常可读 */
+/* 上一篇/下一篇：去掉背景图，改为主题蓝底白字（与顶部横幅呼应） */
+#pagination.pagination-post {
+  background: #49b1f5 !important;
+}
 #pagination.pagination-post .prev-cover,
 #pagination.pagination-post .next-cover {
   display: none !important;
+}
+#pagination.pagination-post .prev-post .label,
+#pagination.pagination-post .next-post .label {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+#pagination.pagination-post .prev-post a:hover .prev_info,
+#pagination.pagination-post .next-post a:hover .next_info {
+  color: #fff !important;
+}
+
+/* 手机端：上一篇/下一篇并排一行，紧凑卡片（左右布局） */
+@media screen and (max-width: 768px) {
+  #pagination .prev-post,
+  #pagination .next-post {
+    width: 50% !important;
+  }
+  #pagination .prev-post a,
+  #pagination .next-post a {
+    height: 72px !important;
+  }
+  #pagination .pagination-info {
+    padding: 8px 12px !important;
+  }
+  #pagination .prev_info,
+  #pagination .next_info {
+    font-size: 13px !important;
+  }
+  #pagination .prev-post .label,
+  #pagination .next-post .label {
+    font-size: 11px !important;
+  }
+}
+
+/* 左右箭头提示（百度风格） */
+#pagination .prev-post .label::before {
+  content: '← ';
+}
+#pagination .next-post .label::after {
+  content: ' →';
 }
