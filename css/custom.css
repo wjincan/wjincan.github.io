@@ -23,3 +23,15 @@
 #sidebar #sidebar-menus.open {
   transform: translate3d(100%, 0, 0) !important;
 }
+
+/* 文章页顶部大图：去掉图片，改为主题蓝纯色（标题白字可读） */
+#page-header.post-bg {
+  background-image: none !important;
+  background-color: #49b1f5 !important;
+}
+
+/* 文章底部上一篇/下一篇：去掉背景图，白色文字在深色底上正常可读 */
+#pagination.pagination-post .prev-cover,
+#pagination.pagination-post .next-cover {
+  display: none !important;
+}
