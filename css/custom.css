@@ -1,0 +1,25 @@
+/* 灵明小世界 自定义样式（通过 inject.head 注入，主题升级不丢失） */
+
+/* 手机端：三横菜单按钮移到左侧（#nav 本身已是定位元素，直接挂靠） */
+@media screen and (max-width: 768px) {
+  #toggle-menu {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+  }
+  /* 站名右移，给三横按钮让位 */
+  #blog_name {
+    margin-left: 44px;
+  }
+}
+
+/* 手机端：菜单抽屉从左侧滑出（权重对齐主题选择器） */
+#sidebar #sidebar-menus {
+  right: auto !important;
+  left: -300px !important;
+}
+#sidebar #sidebar-menus.open {
+  transform: translate3d(100%, 0, 0) !important;
+}
