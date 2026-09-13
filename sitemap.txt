@@ -1,0 +1,15 @@
+https://wjincan.github.io/about/index.html
+https://wjincan.github.io/categories/index.html
+https://wjincan.github.io/tags/index.html
+https://wjincan.github.io/2022/08/10/java%E9%98%B6%E6%AE%B5%E5%A4%8D%E4%B9%A0/
+https://wjincan.github.io/2022/04/08/mysql%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/
+https://wjincan.github.io/2022/04/01/%E6%B5%8B%E8%AF%95/
+https://wjincan.github.io/2021/12/11/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/
+https://wjincan.github.io/
+https://wjincan.github.io/tags/Java/
+https://wjincan.github.io/tags/%E9%9A%8F%E7%AC%94/
+https://wjincan.github.io/tags/Git/
+https://wjincan.github.io/tags/GitHub/
+https://wjincan.github.io/tags/MySQL/
+https://wjincan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/
+https://wjincan.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
